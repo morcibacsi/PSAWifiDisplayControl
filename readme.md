@@ -5,10 +5,12 @@ If you remove your factory fitted head-unit (RD4/RD43/RD45) from your car made b
 
 It also adds the ability to change the display mode by pressing the Seek Up and Seek Down buttons simultaneously on the radio remote stalk.
 
+Here is a video on youtube to see how it works:
+
 [![WATCH IT ON YOUTUBE](https://github.com/morcibacsi/PSAWifiDisplayControl/raw/master/images/youtube_preview.png)](https://www.youtube.com/watch?v=8nrd7SJgO-M "Watch it on YouTube")
 
-The SSID of the access point is: **PSA display AP**
-The password is: **99999999**
+- The SSID of the access point is: **PSA display AP**
+- The password is: **99999999**
 
 Of course you can modify this in the config.h file.
 
