@@ -54,25 +54,30 @@ void PrintArrayToSerial(const uint8_t dataArray[], uint8_t dataArrayLength)
     }
 }
 
-#ifdef TEST_MODE
 /// <summary> 
-/// This task is sending the ignition signal to the radio and the display so we can test without a BSI
+/// This task is sending the no button pressed command
+/// and the ignition signal (if configured) to the radio and the display so we can test without a BSI
 /// </summary>
-void CANIgnitionTaskFunction(void* parameter)
+void CANSendTaskFunction(void* parameter)
 {
     for (;;)
     {
+        #ifdef TEST_MODE
         uint8_t data1[] = { 0x0E, 0x00, 0x05, 0x2F, 0x21, 0x80, 0x00, 0xA0 };
         uint8_t data2[] = { 0x08, 0x32, 0x00, 0x1F, 0x00, 0x0D, 0x40, 0x01 };
 
         CANInterface->SendMessage(0x036, 0, 8, data1);
         CANInterface->SendMessage(0x0F6, 0, 8, data2);
+        #endif
+
+        // reset all the sent buttons to avoid "button stuck" effect
+        uint8_t buttonData[] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+        CANInterface->SendMessage(CAN_ID_MENU_BUTTONS, 0, 6, buttonData);
 
         vTaskDelay(65 / portTICK_PERIOD_MS);
         esp_task_wdt_reset();
     }
 }
-#endif
 
 /// <summary> 
 /// This task is reading the CAN bus so when the SeekUp and SeekDown pressed simultaneously on the remote stalk we can change the mode on the display
@@ -152,7 +157,11 @@ void setup()
         int buttonId = json["button"];
 
         serialPort->println(buttonId);
-        radioButtonPacketSender->SendButtonCode(buttonId);
+
+        for (int i = 0; i < 10; ++i)
+        {
+            radioButtonPacketSender->SendButtonCode(buttonId);
+        }
 
         AsyncResponseStream* response = request->beginResponseStream("application/json");
 
@@ -181,16 +190,14 @@ void setup()
         &CANReadTask,                   // Task handle.
         1);                             // Core where the task should run
 
-#ifdef TEST_MODE
     xTaskCreatePinnedToCore(
-        CANIgnitionTaskFunction,        // Function to implement the task
-        "CANIgnitionTask",              // Name of the task
+        CANSendTaskFunction,            // Function to implement the task
+        "CANSendTask",                  // Name of the task
         10000,                          // Stack size in words
         NULL,                           // Task input parameter
         1,                              // Priority of the task
         &CANIgnitionDataTask,           // Task handle.
         1);                             // Core where the task should run
-#endif
 
     esp_task_wdt_init(TASK_WATCHDOG_TIMEOUT, true);
 }
