@@ -153,7 +153,7 @@ public:
         }
 
         unsigned char *serializedPacket = generator.GetSerializedPacket();
-        canMessageSender->SendMessage(CAN_ID_MENU_BUTTONS, 0, 8, serializedPacket);
+        canMessageSender->SendMessage(CAN_ID_MENU_BUTTONS, 0, 6, serializedPacket);
     }
 
 };
