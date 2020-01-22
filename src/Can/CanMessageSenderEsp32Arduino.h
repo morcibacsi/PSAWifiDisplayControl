@@ -41,9 +41,11 @@ class CanMessageSenderEsp32Arduino : public AbstractCanMessageSender {
               tx_frame.data.u8[i] = byteArray[i];
           }
 
-          xSemaphoreTake(canSemaphore, portMAX_DELAY);
-          ESP32Can.CANWriteFrame(&tx_frame);
-          xSemaphoreGive(canSemaphore);
+          if (xSemaphoreTake(canSemaphore, 10 / portTICK_PERIOD_MS) == pdTRUE)
+          {
+              ESP32Can.CANWriteFrame(&tx_frame);
+              xSemaphoreGive(canSemaphore);
+          }
       }
 
       virtual void ReadMessage(uint16_t *canId, uint8_t *len, uint8_t *buf)
