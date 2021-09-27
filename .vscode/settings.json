@@ -1,0 +1,13 @@
+{
+    "editor.detectIndentation": false,
+    "editor.renderWhitespace": "all",
+    "files.trimTrailingWhitespace": true,
+    "files.associations": {
+        "system_error": "cpp",
+        "new": "cpp",
+        "functional": "cpp",
+        "*.tcc": "cpp",
+        "streambuf": "cpp"
+    },
+    "files.encoding": "utf8"
+}

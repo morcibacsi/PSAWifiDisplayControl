@@ -20,7 +20,7 @@
 // Test should be only used outside of the car
 //#define TEST_MODE
 
-#define HW_VERSION 11
+#define HW_VERSION 14
 
 #if HW_VERSION == 11
     #define CAN_RX_PIN 33

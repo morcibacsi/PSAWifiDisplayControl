@@ -24,12 +24,14 @@ You can use this hardware to interface the CAN bus: [PSAVanCanBridgeHW][psavanca
 
 To build the project you will need the following:
 
- - Arduino IDE with ESP32 board support installed
+ - PlatformIO IDE (the Arduino IDE with ESP32 board support installed should also work, but it isn't tested anymore)
  - Libraries installed from the Used libraries section
 
 ### Used libraries
 
-- [Arduino abstract serial][lib_abstract_serial] (tested version - commit: cda61dd)
+When using PlatformIO these are downloaded automatically
+
+- [Arduino abstract serial][lib_abstract_serial] (tested version - commit: cda61dd, no need to install it, as it is included in the project)
 - [ArduinoJson v6.13.0][lib_arduino_json]
 - [AsyncTCP v1.1.1][lib_async_tcp]
 - [ESPAsyncWebServer  v1.2.3][lib_esp_async_webserver]
