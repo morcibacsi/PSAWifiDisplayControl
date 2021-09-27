@@ -1,4 +1,4 @@
-﻿// PacketGenerator.h
+// PacketGenerator.h
 #pragma once
 
 #ifndef _PacketGenerator_H

@@ -1,4 +1,4 @@
-﻿// Serializer.h
+// Serializer.h
 #pragma once
 
 #ifndef _Serializer_h
