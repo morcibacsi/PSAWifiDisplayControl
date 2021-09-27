@@ -1,10 +1,10 @@
-﻿// CanRadioRemoteStructs.h
+// CanRadioRemoteStructs.h
 #pragma once
 
 #ifndef _CanRadioRemoteStructs_h
     #define _CanRadioRemoteStructs_h
 
-#include "../AbstractCanMessageSender.h"
+#include "../ICanMessageSender.h"
 #include "../../Helpers/PacketGenerator.h"
 
 // CANID: 21F
@@ -38,10 +38,10 @@ typedef union CanRadioRemotePacket {
 #pragma region Sender class
 class CanRadioRemoteButtonPacketSender
 {
-    AbstractCanMessageSender * canMessageSender;
+    ICanMessageSender* canMessageSender;
 
 public:
-    CanRadioRemoteButtonPacketSender(AbstractCanMessageSender * object)
+    CanRadioRemoteButtonPacketSender(ICanMessageSender* object)
     {
         canMessageSender = object;
     }

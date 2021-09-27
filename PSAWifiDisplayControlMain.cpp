@@ -12,7 +12,8 @@
 #include "src/SerialPort/AbstractSerial.h"
 
 #include "src/SerialPort/HardwareSerialAbs.h"
-#include "src/Can/CanMessageSenderEsp32Arduino.h"
+#include "src/Can/ICanMessageSender.h"
+#include "src/Can/CanMessageSenderEsp32Idf.h"
 #include "src/Can/Structs/CanMenuStructs.h"
 
 #include "src/Can/Structs/CanRadioRemoteStructs.h"
@@ -24,7 +25,7 @@
 TaskHandle_t CANIgnitionDataTask;
 TaskHandle_t CANReadTask;
 
-AbstractCanMessageSender* CANInterface;
+ICanMessageSender* CANInterface;
 AbsSer *serialPort;
 CanRadioButtonPacketSender* radioButtonPacketSender;
 
@@ -124,7 +125,7 @@ void setup()
 
     serialPort->begin(SERIAL_BAUD);
 
-    CANInterface = new CanMessageSenderEsp32Arduino(CAN_RX_PIN, CAN_TX_PIN);
+    CANInterface = new CanMessageSenderEsp32Idf(CAN_RX_PIN, CAN_TX_PIN, false, serialPort);
     CANInterface->Init();
     radioButtonPacketSender = new CanRadioButtonPacketSender(CANInterface);
 

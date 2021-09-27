@@ -21,12 +21,6 @@
     <ClInclude Include="__vm\.PSAWifiDisplayControl.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Can\AbstractCanMessageSender.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Can\CanMessageSenderEsp32Arduino.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Can\Structs\CanMenuStructs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -54,12 +48,21 @@
     <ClInclude Include="src\Helpers\index_html.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Can\CanMessageSenderEsp32Idf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Can\ICanMessageSender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PSAWifiDisplayControlMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\SerialPort\HardwareSerialAbs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Can\CanMessageSenderEsp32Idf.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

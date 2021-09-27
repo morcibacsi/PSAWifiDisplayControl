@@ -4,7 +4,7 @@
 #ifndef _CanMenuStructs_h
     #define _CanMenuStructs_h
 
-#include "../AbstractCanMessageSender.h"
+#include "../ICanMessageSender.h"
 #include "../../Helpers/PacketGenerator.h"
 
 // CANID: 3E5
@@ -98,10 +98,10 @@ static int CONST_CAN_RADIO_MENUBUTTONS[] = { CONST_UP_ARROW, CONST_DOWN_ARROW, C
 #pragma region Sender class
 class CanRadioButtonPacketSender
 {
-    AbstractCanMessageSender * canMessageSender;
+    ICanMessageSender* canMessageSender;
 
 public:
-    CanRadioButtonPacketSender(AbstractCanMessageSender * object)
+    CanRadioButtonPacketSender(ICanMessageSender* object)
     {
         canMessageSender = object;
     }

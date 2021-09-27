@@ -30,13 +30,11 @@ To build the project you will need the following:
 ### Used libraries
 
 - [Arduino abstract serial][lib_abstract_serial] (tested version - commit: cda61dd)
-- [Arduino Library for the ESP32 CAN Bus][lib_esp32_can]
 - [ArduinoJson v6.13.0][lib_arduino_json]
 - [AsyncTCP v1.1.1][lib_async_tcp]
 - [ESPAsyncWebServer  v1.2.3][lib_esp_async_webserver]
 
 [lib_abstract_serial]: https://github.com/computergeek125/arduino-abstract-serial
-[lib_esp32_can]: https://github.com/morcibacsi/ESP32-Arduino-CAN/tree/fix/can_cfg_to_constructor
 [lib_arduino_json]: https://github.com/bblanchon/ArduinoJson.git
 [lib_async_tcp]: https://github.com/me-no-dev/AsyncTCP
 [lib_esp_async_webserver]: https://github.com/me-no-dev/ESPAsyncWebServer
